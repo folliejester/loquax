@@ -73,7 +73,7 @@ AutoPoster(config.topdotgg_token, client)
 client.on('ready', async () => {
   console.log(client.user.username + " is online bitches!\n");
   client.guilds.cache.forEach(guild => {
-    client.user.setActivity(`${client.guilds.cache.size} servers | ${client.users.cache.size} members | since 30th October '21 | ~commands | ~getsyden`, { type: 'LISTENING' });
+    client.user.setActivity(`${client.guilds.cache.size} servers | ${client.users.cache.size} members | since 30th October '21`, { type: 'LISTENING' });
     console.log(`${guild.id}\t${guild.me.permissions.has('ADMINISTRATOR')}\t${guild.memberCount}\t${guild.name}`);
     slashcom(config, guild.id, guild.name)
     });
@@ -106,7 +106,7 @@ client.on("guildCreate", async guild => {
     return;// guild.channels.fetch();
   })
   slashcom(config, guild.id, guild.name)
-  client.user.setActivity(`${client.guilds.cache.size} servers | ${client.users.cache.size} members | since 4th June, 20 | ~commands | ~getsyden`, { type: 'LISTENING' });
+  client.user.setActivity(`${client.guilds.cache.size} servers | ${client.users.cache.size} members | since 30th October '21`, { type: 'LISTENING' });
   let joinChannel = await client.channels.fetch("758969811299467276");
   var big = " ";
   if (!guild.large) big = "small";
@@ -129,7 +129,7 @@ client.on("guildCreate", async guild => {
 });
 
   client.on("guildDelete", async guild =>{
-    client.user.setActivity(`${client.guilds.cache.size} servers | ${client.users.cache.size} members | since 4th June, 20 | ~commands | ~getsyden`, { type: 'LISTENING' });
+    client.user.setActivity(`${client.guilds.cache.size} servers | ${client.users.cache.size} members | since 30th October '21`, { type: 'LISTENING' });
     let kickChannel = client.channels.cache.get("758969811299467276");
     var big = " ";
     if (!guild.large) big = "small";
@@ -485,7 +485,7 @@ client.on('interactionCreate', async interaction => {
 
   const pingembed = new Discord.MessageEmbed()
     .setColor("ff2779")
-    .setTitle("Syden's Latency")
+    .setTitle("Loquax's Latency")
     .addFields(
       {name: "Latency",value: `${m1.createdTimestamp - interaction.createdTimestamp}ms ${sign}`,inline: true},
       {name: "API Latency",value: `${Math.round(interaction.client.ws.ping)}ms ${sign2}`,inline: true}
