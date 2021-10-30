@@ -364,7 +364,7 @@ async function pingCommand(msg)
 
   const pingembed = new Discord.MessageEmbed()
     .setColor("ff2779")
-    .setTitle("Syden's Latency")
+    .setTitle("Loquax's Latency")
     .addFields(
       {name: "Latency",value: `${m.createdTimestamp - msg.createdTimestamp}ms ${sign}`,inline: true},
       {name: "API Latency",value: `${Math.round(msg.client.ws.ping)}ms ${sign2}`,inline: true}
