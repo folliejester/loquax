@@ -179,12 +179,12 @@ client.on("messageCreate", async msg => {
     }
     if(chat.length < 1) return;
     msg.channel.sendTyping();
-    const { message } = await fetch(`https://api.udit.gq/api/chatbot?message=${chat.replaceAll('follie','udit')}&name=${msg.guild.me.displayName}&user=${msg.author.id}&gender=female`)
+    const { message } = await fetch(`https://api.affiliateplus.xyz/api/chatbot?message=${chat}&botname=Loquax&ownername=folliejester&user=${msg.author.id}&age=2 months&birthyear=2021&birthdate=October 30, 2021&birthday=October 30&birthplace=Calcutta, India&build=Project Syden v2&country=India&email=support@syden.xyz&location=India&physicallocation=India&president=Ram Nath Kovind&religion=Hindu&scownername=folliejester&state=West Bengal&version=Project Syden v2`)
     .then (response => response.json())
     .catch(err => {
       console.log(err.message)
     })
-    return msg.reply(message.replaceAll('Udit','Follie').replace('a great A.I. R&D team based in CA. This is developed by them to help people all over the world with artificial intellegence.','my dear great botmaster.'))
+    return msg.reply(message.replace(`<a href="http://www.msn.com/en-us/music">click here to search and listen music</a>`,`Tune in to https://radio.syden.xyz to listen to music!`).replace('2 months years','2 months').replace('August 2 months8, 2021','October 30, 2021').replace('Support@affiliateplus.xyz','support@syden.xyz'))
     .catch(err => {
     return;
   })
@@ -408,6 +408,32 @@ client.on('interactionCreate', async interaction => {
     .catch(err => {
       return;
     })
+  }
+  else if(interaction.commandName === 'help')
+  {
+    const version = require("./package.json");
+  const app = await client.application.fetch();
+  const embed = new Discord.MessageEmbed()
+  .setColor('ff2779')
+  .setAuthor(`Made by ${app.owner.username}#${app.owner.discriminator}`,app.owner.avatarURL({format: "jpeg",dynamic:true, size:1024}))
+  .setTitle(app.name +' | '+ client.user.username+'#'+client.user.discriminator)
+  .setURL('https://dsc.gg/loquax')
+  .setDescription(`Hello ${interaction.member.displayName},\nPrefix for this server is ${Prefix}\n\nTo setup, type the follow command in your server's channel : \`${Prefix}setcb\` and the channel will be registered for me to chat.\nTo remove it, type \`${Prefix}delcb\` in the any channel and the registered channel will be removed.\nTo change the prefix type \`${Prefix}prefix [your preffered symbol]\`\nTo check the bot's ping, type \`${Prefix}ping\`\nTo check how long the bot is online for, type \`${Prefix}uptime\`\nYou can also use the slash command interaction by typing a forward slash/ and choose the preferred interaction you want.\nIf you face any trouble, [click to join the support server](https://discord.gg/FgjzdwB "Syden's Test & Support Server") to get assistance.\nI'd also appreciate your support to the project at [Buy Me A Coffee](https://buymeacoffee.com/Loquax "Loquax's BMC Page").\n\n[Invite me](https://discord.com/oauth2/authorize?client_id=903855063359950888&permissions=517611052096&scope=bot%20applications.commands "Vanity : dsc.gg/loquax") | [Github](https://github.com/folliejester/loquax "Open Source") | [VPS Host](https://www.vultr.com/?ref=8913956 "Vultr VPS") | [Community Server](https://discord.gg/96vgbea "The Rushia's Cult!")`)
+  .setImage('https://i.imgur.com/uXZU4Iw.gif')
+  .setThumbnail(app.iconURL({format:"jpeg",size:1024,dynamic:true}))
+  .setFooter('https://buymeacoffee.com/Loquax','https://bmc-dev.s3.us-east-2.amazonaws.com/assets/icons/bmc_icon_black.png')
+  .addField('Launched on','30th October 2021',true)
+  .addField('API and environment',`[discord.js v${version.dependencies['discord.js'].replace('^',"")}](https://discord.js.org/#/ "Imagine a bot")\n[Node.js v${version.engines.node.replace('.x',"")}](https://nodejs.org/en/ "Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.")`,true)
+  interaction.member.send({embeds:[embed]})
+  .then( m=> {
+    interaction.reply("Check your DM!")
+    .catch(err => {
+      return;
+    })
+})
+.catch(e=>{
+  interaction.reply({embeds:[embed]})
+})
   }
   else if (interaction.commandName === 'chatbot')
   {
